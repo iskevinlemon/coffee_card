@@ -63,6 +63,7 @@ flutter:
     - assets/img/coffee_bg.jpg
     - assets/img/coffee_bean.png
     - assets/img/sugar_cube.png
+    - assets/img/milk.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -8,13 +8,28 @@ class CoffeePrefs extends StatefulWidget {
 }
 
 class _CoffeePrefsState extends State<CoffeePrefs> {
+
+  int strength = 1;
+  int sugars = 1;
+  int milk = 1;
+
   // App logic goes here
   void increaseStrength(){
-    print("Increasing strength by 1");
+    setState(() {
+      strength = strength < 5 ? strength + 1 : 1;
+    });
   }
 
   void increaseSugars(){
-    print("Increasing sugars by 1");
+    setState(() {
+      sugars = sugars < 5 ? sugars + 1 : 0;
+    });
+  }
+
+  void increaseMilk(){
+    setState(() {
+      milk = milk < 5 ? milk + 1 : 0;
+    });
   }
 
   @override
@@ -24,12 +39,14 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
         Row(
           children: [
             const Text("Strength: "),
-            const Text("3"),
-            Image.asset("assets/img/coffee_bean.png", 
-              width: 25,
-              color: Colors.brown[100],
-              colorBlendMode: BlendMode.multiply,
-            ),
+
+            for(int i=0; i< strength; i++)
+              Image.asset("assets/img/coffee_bean.png", 
+                width: 25,
+                color: Colors.brown[100],
+                colorBlendMode: BlendMode.multiply,
+              ),
+
             // const SizedBox(width: 100),
             const Expanded(child: SizedBox()),
             FilledButton(
@@ -42,15 +59,21 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
             )
           ],
         ),
+
         Row(
           children: [
             const Text("Sugars: "),
-            const Text("3"),
-            Image.asset("assets/img/sugar_cube.png", 
-              width: 25,
-              color: Colors.brown[100],
-              colorBlendMode: BlendMode.multiply,
-            ),
+
+            if(sugars == 0)
+              const Text("No sugars"),
+
+            for(int i=0; i< sugars; i++)
+              Image.asset("assets/img/sugar_cube.png", 
+                width: 25,
+                color: Colors.brown[100],
+                colorBlendMode: BlendMode.multiply,
+              ),
+
             // const SizedBox(width: 100),
             const Expanded(child: SizedBox()),
             FilledButton(
@@ -62,7 +85,35 @@ class _CoffeePrefsState extends State<CoffeePrefs> {
               child: const Text("+")
             )
           ],
+        ),
+
+        Row(
+          children: [
+            const Text("Milk: "),
+
+            if(sugars == 0)
+              const Text("No milk"),
+
+            for(int i=0; i< milk; i++)
+              Image.asset("assets/img/milk.png", 
+                width: 25,
+                color: Colors.brown[100],
+                colorBlendMode: BlendMode.multiply,
+              ),
+
+            // const SizedBox(width: 100),
+            const Expanded(child: SizedBox()),
+            FilledButton(
+              style: FilledButton.styleFrom(
+                backgroundColor: Colors.brown,
+                foregroundColor: Colors.white
+              ),
+              onPressed: increaseMilk, 
+              child: const Text("+")
+            )
+          ],
         )
+
       ],
     );
   }

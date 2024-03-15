@@ -9,7 +9,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "My Coffee Id:",
+          "My Coffee Preference:",
           style: TextStyle(
             color: Colors.white, // Set text color to white
             fontWeight: FontWeight.bold
@@ -25,7 +25,7 @@ class Home extends StatelessWidget {
           Container(
             color: Colors.brown[200],
             padding: const EdgeInsets.all(20),
-            child: const Text("How I like my coffee")
+            child: const Text("How I like my coffee 😋")
           ),
           Container(
             color: Colors.brown[100],
